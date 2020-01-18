@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { RickAndMortyShowComponent } from './rick-and-morty-show/rick-and-morty-show.component';
+
+const routes: Routes = [{
+  path: 'rick-and-morty',
+  component: RickAndMortyShowComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
