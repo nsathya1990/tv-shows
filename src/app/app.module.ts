@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { RickAndMortyShowComponent } from './rick-and-morty-show/rick-and-morty-show.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RickAndMortyShowComponent
+    RickAndMortyShowComponent,
+    UnderConstructionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
