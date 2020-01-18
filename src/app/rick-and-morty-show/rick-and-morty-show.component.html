@@ -1,3 +1,5 @@
-<p>
-  rick-and-morty-show works!
-</p>
+<div class="character-list-container">
+  <div *ngFor="let character of characterList">
+    <app-rick-and-morty-show-character [character]="character"></app-rick-and-morty-show-character>
+  </div>
+</div>

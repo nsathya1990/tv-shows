@@ -1,0 +1,24 @@
+.character-list-container {
+    background-color: #343a40;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character-list-container > div {
+    text-align: center;
+    margin: 5px;
+}
+
+@media (min-width: 992px) {
+    .character-list-container > div {
+        flex-basis: 20%;
+    }
+}
+
+@media (max-width: 768px) {
+    .character-list-container > div {
+        flex-basis: 40%;
+    }
+}
