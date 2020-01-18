@@ -2,10 +2,13 @@ Sapient XT Hiring test problem statement:
 
 [Problem Statement]
 Develop a front-end application which would let the users help list and browse all Characters of Rick and Morty Show.
+
 [Minimum Requirement]
 — Use of Web API to fetch Characters details.
+
 Response Parameters to be used:
 [ ID, Name, Status, Species, Gender, Image, Created, Origin, Last Location, etc].
+
 Key Features:
 ●	Visually interactive responsive design listing all the characters.
 ○	Mobile should be of 2 column design while desktop and Tablet should have 4 columns.
@@ -16,6 +19,7 @@ Key Features:
 ●	Custom elegant design, fonts and icons to make web app more user-friendly.
 ●	Use your imagination and add features which would make things easier for end users.
 ●	You may add portfolio activity comprising awesome work you have done on web application(s).
+
 Build and local environment set-up requirements:
 •	Some bundling package should be used to deliver the static assets for the web page, preferably Webpack.
 •	Standard Linting processes should be set as part of local dev environment which should run with build process.
@@ -23,6 +27,7 @@ Build and local environment set-up requirements:
 Guidelines:
 Submit Screenshot, Source code & Instructions.
 API to be used: https://rickandmortyapi.com/api/character/ 
+
 — Ideal Frontend Stack:
 ●	Any of your favorite JS Framework: Javascript (AngularJS), HTML, CSS.
 ●	Custom CSS – You can use any standard library. A CSS-in-JS approach is also something that you can explore for React etc.
@@ -33,5 +38,6 @@ API to be used: https://rickandmortyapi.com/api/character/
 ●	http://subtlepatterns.com/thumbnail-view/
 ●	http://codebeautify.org/jsonviewer
 http://www.flaticon.com/categories
+
 [Code Submission]
 Check in your code in to github and share the URL.
