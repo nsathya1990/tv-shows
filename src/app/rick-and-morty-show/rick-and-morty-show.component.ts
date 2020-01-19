@@ -36,4 +36,22 @@ export class RickAndMortyShowComponent implements OnInit {
     this.visiblecharacterList = this.characterList.filter(character => character.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
+  sortEpisodes(sortDefinition: string): void {
+    const ascending = (a, b) => {
+      if (a.id < b.id) { return -1; }
+      if (a.id > b.id) { return 1; }
+      return 0;
+    };
+    const descending = (a, b) => {
+      if (a.id > b.id) { return -1; }
+      if (a.id < b.id) { return 1; }
+      return 0;
+    };
+    if (sortDefinition === 'asc') {
+      this.visiblecharacterList = this.characterList.slice().sort(ascending);
+    } else {
+      this.visiblecharacterList = this.characterList.slice().sort(descending);
+    }
+  }
+
 }
