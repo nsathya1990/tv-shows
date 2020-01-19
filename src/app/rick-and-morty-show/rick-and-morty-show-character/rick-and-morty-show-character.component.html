@@ -1,29 +1,29 @@
-<div class="card" style="width: 18rem;">
+<div class="card" >
   <img class="card-img-top" [src]="character.image" [alt]="character.name">
   <div class="card-body">
     <div class="card-title">
-      <h5>{{ character.name }}</h5>
-      <span>id: {{ character.id }} - created 2 years ago</span>
+      <h6>{{ character.name }}</h6>
+      <span style="font-size: smaller;">id: {{ character.id }} - created 2 years ago</span>
     </div>
-    <div class="row">
-      <span class="col-4">STATUS</span>
-      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.status }}</span>
+    <div class="card-field-block">
+      <span class="card-field-key">STATUS</span>
+      <span class="card-field-value">{{ character.status }}</span>
     </div>
-    <div class="row">
-      <span class="col-4">SPECIES</span>
-      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.species }}</span>
+    <div class="card-field-block">
+      <span class="card-field-key">SPECIES</span>
+      <span class="card-field-value">{{ character.species }}</span>
     </div>
-    <div class="row">
-      <span class="col-4">GENDER</span>
-      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.gender }}</span>
+    <div class="card-field-block">
+      <span class="card-field-key">GENDER</span>
+      <span class="card-field-value">{{ character.gender }}</span>
     </div>
-    <div class="row">
-      <span class="col-4">ORIGIN</span>
-      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.origin.name }}</span>
+    <div class="card-field-block">
+      <span class="card-field-key">ORIGIN</span>
+      <span class="card-field-value">{{ character.origin.name }}</span>
     </div>
-    <div class="row">
-      <span class="col-4">LAST LOCATION</span>
-      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.location.name }}</span>
+    <div class="card-field-block">
+      <span class="card-field-key">LAST LOCATION</span>
+      <span class="card-field-value">{{ character.location.name }}</span>
     </div>
   </div>
 </div>
