@@ -11,6 +11,7 @@ import { IRickAndMortyShowCharacter } from './rick-and-morty-show-character';
 export class RickAndMortyShowComponent implements OnInit {
 
   characterList: IRickAndMortyShowCharacter[] = [];
+  visiblecharacterList: IRickAndMortyShowCharacter[] = [];
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
@@ -24,10 +25,15 @@ export class RickAndMortyShowComponent implements OnInit {
   getSuccess(data: IRickAndMortyShowCharacter[]) {
     console.log(data);
     this.characterList = data;
+    this.visiblecharacterList = this.characterList;
   }
 
   getError(error) {
     console.log(error);
+  }
+
+  searchEpisodes(searchTerm: string): void {
+    this.visiblecharacterList = this.characterList.filter(character => searchTerm === character.name);
   }
 
 }

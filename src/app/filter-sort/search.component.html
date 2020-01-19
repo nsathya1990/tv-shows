@@ -1,0 +1,7 @@
+<label for="search-by-name">Search by Name</label>
+<div class="input-group mb-3">
+  <input id="search-by-name" type="text" class="form-control" aria-label="Search by Name" [(ngModel)]="searchTerm">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="searchEpisode()">Search</button>
+  </div>
+</div>
