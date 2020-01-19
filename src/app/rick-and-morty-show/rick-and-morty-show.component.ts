@@ -24,8 +24,8 @@ export class RickAndMortyShowComponent implements OnInit {
 
   getSuccess(data: IRickAndMortyShowCharacter[]) {
     console.log(data);
-    this.characterList = data;
-    this.visiblecharacterList = this.characterList;
+    this.characterList = data.slice();
+    this.visiblecharacterList = data.slice();
   }
 
   getError(error) {
@@ -33,7 +33,7 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   searchEpisodes(searchTerm: string): void {
-    this.visiblecharacterList = this.characterList.filter(character => searchTerm === character.name);
+    this.visiblecharacterList = this.characterList.filter(character => character.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
 }
