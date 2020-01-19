@@ -1,4 +1,9 @@
-<div class="rick-morty-page">
+<div class="d-flex justify-content-center" *ngIf="showLoader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="rick-morty-page" *ngIf="!showLoader">
   <div class="rick-morty-filter">
     <app-filter (filterEpisodesBasedOnSpecies)="filterEpisodesBasedOnSpecies($event)"
       (filterEpisodesBasedOnGender)="filterEpisodesBasedOnGender($event)"

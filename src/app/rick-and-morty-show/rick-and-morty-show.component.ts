@@ -12,6 +12,7 @@ export class RickAndMortyShowComponent implements OnInit {
 
   characterList: IRickAndMortyShowCharacter[] = [];
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
+  showLoader = true;
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
@@ -23,9 +24,9 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   getSuccess(data: IRickAndMortyShowCharacter[]) {
-    console.log(data);
     this.characterList = data.slice();
     this.visiblecharacterList = data.slice();
+    this.showLoader = false;
   }
 
   getError(error) {
@@ -77,10 +78,8 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   filterEpisodesBasedOnOrigin(originArr: any[]): void {
-    console.log(originArr);
     this.visiblecharacterList = this.characterList.filter(character => {
       const charOrigin = character.origin.name.toLowerCase();
-      console.log(charOrigin);
       if (originArr.includes(charOrigin)) {
         return true;
       } else if (originArr.includes('unknown') && charOrigin !== 'earth (c-137)' && charOrigin !== 'earth (replacement dimension)') {

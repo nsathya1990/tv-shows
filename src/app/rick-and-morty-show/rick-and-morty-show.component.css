@@ -11,18 +11,6 @@
     margin: 5px;
 }
 
-/* @media (min-width: 768px) {
-    .character-list-container > div {
-        flex-basis: 20%;
-    }
-}
-
-@media (max-width: 768px) {
-    .character-list-container > div {
-        flex-basis: 40%;
-    }
-} */
-
 @media only screen and (max-width: 576px) {
     .rick-morty-page {
         display: block;
@@ -80,4 +68,11 @@
 
 .rick-morty-content {
     padding: 0.5%;
+}
+
+.d-flex {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
