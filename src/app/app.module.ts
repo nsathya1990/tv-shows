@@ -9,6 +9,7 @@ import { RickAndMortyShowComponent } from './rick-and-morty-show/rick-and-morty-
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import { HomeComponent } from './home/home.component';
 import { RickAndMortyShowCharacterComponent } from './rick-and-morty-show/rick-and-morty-show-character/rick-and-morty-show-character.component';
+import { SearchSortComponent } from './filter/search-sort/search-sort.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RickAndMortyShowCharacterComponent } from './rick-and-morty-show/rick-a
     RickAndMortyShowComponent,
     UnderConstructionComponent,
     HomeComponent,
-    RickAndMortyShowCharacterComponent
+    RickAndMortyShowCharacterComponent,
+    SearchSortComponent
   ],
   imports: [
     BrowserModule,

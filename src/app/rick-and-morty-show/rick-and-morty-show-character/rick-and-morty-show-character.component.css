@@ -1,0 +1,17 @@
+.card-body {
+    background-color: #333;
+    position: relative;
+}
+
+.card-title {
+    text-align: left;
+    width: 100%;
+    padding-left: 5%;
+    height: 55px;
+    position: absolute;
+    top: -55px;
+    left: 0px;
+    color: #FFF;
+    background-color: #333;
+    opacity: 70%;
+}

@@ -1,8 +1,29 @@
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" [src]="character.image" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <img class="card-img-top" [src]="character.image" [alt]="character.name">
+  <div class="card-body container">
+    <div class="card-title">
+      <h5>{{ character.name }}</h5>
+      <span>id: {{ character.id }} - created 2 years ago</span>
+    </div>
+    <div class="row">
+      <span class="col-4">STATUS</span>
+      <span class="col-8">{{ character.status }}</span>
+    </div>
+    <div class="row">
+      <span class="col-4">SPECIES</span>
+      <span class="col-8">{{ character.species }}</span>
+    </div>
+    <div class="row">
+      <span class="col-4">GENDER</span>
+      <span class="col-8">{{ character.gender }}</span>
+    </div>
+    <div class="row">
+      <span class="col-4">ORIGIN</span>
+      <span class="col-8">{{ character.origin.name }}</span>
+    </div>
+    <div class="row">
+      <span class="col-4">LAST LOCATION</span>
+      <span class="col-8">{{ character.location.name }}</span>
+    </div>
   </div>
 </div>

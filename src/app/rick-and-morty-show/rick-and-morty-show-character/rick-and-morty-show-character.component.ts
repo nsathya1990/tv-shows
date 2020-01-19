@@ -10,6 +10,7 @@ import { IRickAndMortyShowCharacter } from '../rick-and-morty-show-character';
 export class RickAndMortyShowCharacterComponent implements OnInit {
 
   @Input() character: IRickAndMortyShowCharacter;
+
   constructor() { }
 
   ngOnInit() {
