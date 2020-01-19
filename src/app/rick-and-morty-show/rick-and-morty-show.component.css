@@ -22,3 +22,35 @@
         flex-basis: 40%;
     }
 }
+
+
+
+@media only screen and (max-width: 600px) {
+    .rick-morty-page {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .rick-morty-page {
+        display: flex;
+    }
+    .rick-morty-filter {
+        flex: 1;
+    }
+    .rick-morty-content {
+        flex: 2;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .rick-morty-page {
+        display: flex;
+    }
+    .rick-morty-filter {
+        flex: 1;
+    }
+    .rick-morty-content {
+        flex: 4;
+    }
+}

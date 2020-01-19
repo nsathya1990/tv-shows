@@ -1,0 +1,63 @@
+<h4 style="margin: 5%;">Filters</h4>
+<div class="filter-block">
+  <form #speciesForm="ngForm">
+    <fieldset>
+      <h5>Species</h5>
+      <div>
+        <input type="checkbox" id="human" name="human" [(ngModel)]="species.human">
+        <label for="human">Human</label>
+      </div>
+      <div>
+        <input type="checkbox" id="alien" name="alien" [(ngModel)]="species.alien">
+        <label for="alien">Alien</label>
+      </div>
+      <div>
+        <input type="checkbox" id="other" name="other" [(ngModel)]="species.other">
+        <label for="other">Other Species</label>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="filter-block">
+  <form #genderForm="ngForm">
+    <h5>Gender</h5>
+    <fieldset>
+      <div>
+        <input type="checkbox" id="male" name="male" [(ngModel)]="gender.male">
+        <label for="male">Male</label>
+      </div>
+      <div>
+        <input type="checkbox" id="female" name="female" [(ngModel)]="gender.female">
+        <label for="female">Female</label>
+      </div>
+      <div>
+        <input type="checkbox" id="unknown" name="unknown" [(ngModel)]="gender.unknown">
+        <label for="unknown">Unknown</label>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="filter-block">
+  <form #originForm="ngForm">
+    <h5>Origin</h5>
+    <fieldset>
+      <div>
+        <input type="checkbox" id="earthC137" name="earthC137" [(ngModel)]="origin.earthC137">
+        <label for="earthC137">Earth (C-137)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="earthReplacementDivision" name="earthReplacementDivision"
+          [(ngModel)]="origin.earthReplacementDivision">
+        <label for="earthReplacementDivision">Earth (Replacement Dimension)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="abadango" name="abadango" [(ngModel)]="origin.abadango">
+        <label for="abadango">Abadango</label>
+      </div>
+      <div>
+        <input type="checkbox" id="otherOrigins" name="other" [(ngModel)]="origin.other">
+        <label for="otherOrigins">Other Origins</label>
+      </div>
+    </fieldset>
+  </form>
+</div>

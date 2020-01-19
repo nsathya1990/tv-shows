@@ -1,15 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12">
-      <app-search (searchEpisodes)="searchEpisodes($event)"></app-search>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-12" style="justify-content: center; display: flex; align-items: center;">
-      <app-sort (sortEpisodes)="sortEpisodes($event)"></app-sort>
-    </div>
+<div class="rick-morty-page">
+  <div class="rick-morty-filter">
+    <app-filter (filterEpisodesBasedOnSpecies)="filterEpisodesBasedOnSpecies($event)"
+      (filterEpisodesBasedOnGender)="filterEpisodesBasedOnGender($event)"
+      (filterEpisodesBasedOnOrigin)="filterEpisodesBasedOnOrigin($event)"></app-filter>
   </div>
-</div>
-<div class="character-list-container">
-  <div *ngFor="let character of visiblecharacterList">
-    <app-rick-and-morty-show-character [character]="character"></app-rick-and-morty-show-character>
+  <div class="rick-morty-content">
+    <div style="display: flex">
+      <div style="flex: 1;">
+        <app-search (searchEpisodes)="searchEpisodes($event)"></app-search>
+      </div>
+      <div style="flex: 1; justify-content: center; display: flex; align-items: center;">
+        <app-sort (sortEpisodes)="sortEpisodes($event)"></app-sort>
+      </div>
+    </div>
+    <div class="character-list-container">
+      <div *ngFor="let character of visiblecharacterList">
+        <app-rick-and-morty-show-character [character]="character"></app-rick-and-morty-show-character>
+      </div>
+    </div>
   </div>
 </div>

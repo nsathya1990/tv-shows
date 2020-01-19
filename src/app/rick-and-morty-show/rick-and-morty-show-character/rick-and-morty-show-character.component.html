@@ -1,29 +1,29 @@
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" [src]="character.image" [alt]="character.name">
-  <div class="card-body container">
+  <div class="card-body">
     <div class="card-title">
       <h5>{{ character.name }}</h5>
       <span>id: {{ character.id }} - created 2 years ago</span>
     </div>
     <div class="row">
       <span class="col-4">STATUS</span>
-      <span class="col-8">{{ character.status }}</span>
+      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.status }}</span>
     </div>
     <div class="row">
       <span class="col-4">SPECIES</span>
-      <span class="col-8">{{ character.species }}</span>
+      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.species }}</span>
     </div>
     <div class="row">
       <span class="col-4">GENDER</span>
-      <span class="col-8">{{ character.gender }}</span>
+      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.gender }}</span>
     </div>
     <div class="row">
       <span class="col-4">ORIGIN</span>
-      <span class="col-8">{{ character.origin.name }}</span>
+      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.origin.name }}</span>
     </div>
     <div class="row">
       <span class="col-4">LAST LOCATION</span>
-      <span class="col-8">{{ character.location.name }}</span>
+      <span class="col-8" style="color: #b66e0e; text-align: right;">{{ character.location.name }}</span>
     </div>
   </div>
 </div>

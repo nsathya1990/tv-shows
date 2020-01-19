@@ -54,4 +54,40 @@ export class RickAndMortyShowComponent implements OnInit {
     }
   }
 
+  filterEpisodesBasedOnSpecies(speciesArr: any[]) {
+    this.visiblecharacterList = this.characterList.filter(character => {
+      const characterSpecies = character.species.toLowerCase();
+      if (speciesArr.includes(characterSpecies)) {
+        return true;
+      } else if (speciesArr.includes('other') && characterSpecies !== 'human' && characterSpecies !== 'alien') {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  filterEpisodesBasedOnGender(genderArr: any[]): void {
+    this.visiblecharacterList = this.characterList.filter(character => {
+      const characterGender = character.gender.toLowerCase();
+      if (genderArr.includes(characterGender)) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  filterEpisodesBasedOnOrigin(originArr: any[]): void {
+    console.log(originArr);
+    this.visiblecharacterList = this.characterList.filter(character => {
+      const charOrigin = character.origin.name.toLowerCase();
+      console.log(charOrigin);
+      if (originArr.includes(charOrigin)) {
+        return true;
+      } else if (originArr.includes('unknown') && charOrigin !== 'earth (c-137)' && charOrigin !== 'earth (replacement dimension)') {
+        return true;
+      }
+      return false;
+    });
+  }
+
 }
