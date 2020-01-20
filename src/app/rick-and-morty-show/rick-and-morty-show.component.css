@@ -35,7 +35,7 @@
         text-align: right;
     }
     .character-list-container > div {
-        flex: 0 42%;
+        flex: 1 40%;
     }
     .alert {
         width: 100%;
@@ -48,6 +48,9 @@
     }
     .rick-morty-filter {
         flex: 1;
+        position: sticky;
+        height: fit-content;
+        top: 56px;
     }
     .rick-morty-content {
         flex: 3;
@@ -61,10 +64,16 @@
         text-align: right;
     }
     .character-list-container > div {
-        flex: 0 20%;
+        flex: 1 25%;
     }
     .alert {
         width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .character-list-container > div {
+        flex: 1 20%;
     }
 }
 
@@ -74,6 +83,9 @@
     }
     .rick-morty-filter {
         flex: 1;
+        position: sticky;
+        height: fit-content;
+        top: 60px;
     }
     .rick-morty-content {
         flex: 4;
