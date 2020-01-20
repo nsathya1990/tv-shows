@@ -1,0 +1,9 @@
+.carousel {
+    width: 50%;
+    margin: auto;
+    top: 5rem;
+}
+
+.carousel-caption {
+    cursor: pointer;
+}
