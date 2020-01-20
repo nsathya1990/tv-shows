@@ -14,6 +14,7 @@ export class RickAndMortyShowComponent implements OnInit {
   characterList: IRickAndMortyShowCharacter[] = [];
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
   selectedFilters: string[] = [];
+  filterObject = {};
   dataLoadMessage = {
     loading: 'Data Loading',
     complete: 'Data Loaded'
@@ -23,6 +24,8 @@ export class RickAndMortyShowComponent implements OnInit {
   showLoader = true;
   speciesArr = ['human', 'alien'];
   genderArr = ['male', 'female', 'unknown'];
+  searchTerm = '';
+  sortDefn: string;
   toastrMessage: string;
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
@@ -71,10 +74,12 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   searchEpisodes(searchTerm: string): void {
-    this.visiblecharacterList = this.characterList.filter(character => character.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    this.searchTerm = searchTerm;
+    this.filterEpisodes(this.filterObject);
   }
 
   sortEpisodes(sortDefinition: string): void {
+    this.sortDefn = sortDefinition;
     const ascending = (a, b) => {
       if (a.id < b.id) { return -1; }
       if (a.id > b.id) { return 1; }
@@ -93,16 +98,19 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   filterEpisodes(filterObj: Object) {
+    this.filterObject = filterObj;
     this.selectedFilters = [].concat(filterObj['species'], filterObj['gender'], filterObj['origin']);
-    this.visiblecharacterList = this.characterList.filter(character => {
 
+    this.visiblecharacterList = this.characterList.filter(character => {
       const speciesFilterCondition = this.speciesFilterCheck(filterObj['species'], character.species.toLowerCase());
       const genderFilterCondition = this.genderFilterCheck(filterObj['gender'], character.gender.toLowerCase());
-      if (speciesFilterCondition && genderFilterCondition) {
+      const searchTermCondition = this.searchTermCheck(character.name.toLowerCase());
+      if (speciesFilterCondition && genderFilterCondition && searchTermCondition) {
         return true;
       }
       return false;
     });
+    this.sortEpisodes(this.sortDefn);
   }
 
   speciesFilterCheck(filteredSpeciesArr: any[], charSpecies: string): boolean {
@@ -122,5 +130,19 @@ export class RickAndMortyShowComponent implements OnInit {
     }
     return false;
   }
+
+  searchTermCheck(characterName: string) {
+    if (!this.searchTerm) {
+      return true;
+    } else if (characterName.includes(this.searchTerm.toLowerCase())) {
+      return true;
+    }
+    return false;
+  }
+
+  trackByFn(index, item) {
+    return index;
+  }
+
 
 }

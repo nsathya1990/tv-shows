@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="character-list-container">
-      <div *ngFor="let character of visiblecharacterList">
+      <div *ngFor="let character of visiblecharacterList; trackBy: trackByFn" >
         <app-rick-and-morty-show-character [character]="character"></app-rick-and-morty-show-character>
       </div>
     </div>
