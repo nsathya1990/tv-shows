@@ -13,6 +13,7 @@ export class RickAndMortyShowComponent implements OnInit {
   characterList: IRickAndMortyShowCharacter[] = [];
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
   selectedFilters: string[] = [];
+  dataLoadedToastr = false;
   showLoader = true;
   speciesArr = ['human', 'alien'];
   genderArr = ['male', 'female', 'unknown'];
@@ -20,6 +21,10 @@ export class RickAndMortyShowComponent implements OnInit {
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData(): void {
     this._rickAndMortyShowService.getRickAndMortyCharactersList().subscribe(
       data => this.getSuccess(data['results']),
       error => this.getError(error)
@@ -31,6 +36,8 @@ export class RickAndMortyShowComponent implements OnInit {
     this.characterList = data.slice();
     this.visiblecharacterList = data.slice();
     this.showLoader = false;
+    this.dataLoadedToastr = true;
+    setTimeout(() => this.dataLoadedToastr = false, 3000);
   }
 
   getError(error) {

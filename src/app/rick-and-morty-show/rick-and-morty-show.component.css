@@ -81,3 +81,11 @@
     padding: 1%;
     margin: 1%;
 }
+
+.alert {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 25%;
+    text-align: center;
+}
