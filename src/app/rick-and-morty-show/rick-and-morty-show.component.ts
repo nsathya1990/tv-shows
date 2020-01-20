@@ -25,7 +25,7 @@ export class RickAndMortyShowComponent implements OnInit {
   speciesArr = ['human', 'alien'];
   genderArr = ['male', 'female', 'unknown'];
   searchTerm = '';
-  sortDefn: string;
+  sortDefn = 'asc';
   toastrMessage: string;
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
