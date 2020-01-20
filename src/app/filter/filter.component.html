@@ -37,27 +37,3 @@
     </fieldset>
   </form>
 </div>
-<div class="filter-block">
-  <form #originForm="ngForm">
-    <h5>Origin</h5>
-    <fieldset>
-      <div>
-        <input type="checkbox" id="earthC137" name="earthC137" [(ngModel)]="origin.earthC137">
-        <label for="earthC137">Earth (C-137)</label>
-      </div>
-      <div>
-        <input type="checkbox" id="earthReplacementDivision" name="earthReplacementDivision"
-          [(ngModel)]="origin.earthReplacementDivision">
-        <label for="earthReplacementDivision">Earth (Replacement Dimension)</label>
-      </div>
-      <div>
-        <input type="checkbox" id="abadango" name="abadango" [(ngModel)]="origin.abadango">
-        <label for="abadango">Abadango</label>
-      </div>
-      <div>
-        <input type="checkbox" id="otherOrigins" name="other" [(ngModel)]="origin.other">
-        <label for="otherOrigins">Other Origins</label>
-      </div>
-    </fieldset>
-  </form>
-</div>

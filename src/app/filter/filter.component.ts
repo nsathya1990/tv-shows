@@ -11,7 +11,6 @@ export class FilterComponent implements OnInit {
   @Output() filterEpisodes = new EventEmitter<any>();
   @ViewChild('speciesForm') public speciesForm: NgForm;
   @ViewChild('genderForm') public genderForm: NgForm;
-  @ViewChild('originForm') public originForm: NgForm;
   species = {
     human: true,
     alien: true,
@@ -22,19 +21,11 @@ export class FilterComponent implements OnInit {
     female: true,
     unknown: true
   };
-  origin = {
-    earthC137: true,
-    earthReplacementDivision: true,
-    abadango: true,
-    other: true
-  };
   speciesArr: string[] = [];
   genderArr: string[] = [];
-  originArr: string[] = [];
   filterObj = {
     species: [],
     gender: [],
-    origin: []
   };
 
   constructor() { }
@@ -64,23 +55,6 @@ export class FilterComponent implements OnInit {
         }
       });
       this.filterObj.gender = this.genderArr;
-      this.filterEpisodes.emit(this.filterObj);
-    });
-
-    this.originForm.valueChanges.subscribe(origin => {
-      this.originArr = [];
-      Object.keys(origin).forEach(key => {
-        if (origin[key]) {
-          if (key === 'earthC137') {
-            this.originArr.push('earth (c-137)');
-          } else if (key === 'earthReplacementDivision') {
-            this.originArr.push('earth (replacement dimension)');
-          } else {
-            this.originArr.push(key);
-          }
-        }
-      });
-      this.filterObj.origin = this.originArr;
       this.filterEpisodes.emit(this.filterObj);
     });
   }

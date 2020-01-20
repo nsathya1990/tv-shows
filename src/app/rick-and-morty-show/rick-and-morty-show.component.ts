@@ -16,7 +16,6 @@ export class RickAndMortyShowComponent implements OnInit {
   showLoader = true;
   speciesArr = ['human', 'alien'];
   genderArr = ['male', 'female', 'unknown'];
-  originArr = ['earth (c-137)', 'earth (replacement dimension)', 'abadango'];
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
@@ -61,13 +60,12 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   filterEpisodes(filterObj: Object) {
+    this.selectedFilters = [].concat(filterObj['species'], filterObj['gender'], filterObj['origin']);
     this.visiblecharacterList = this.characterList.filter(character => {
 
       const speciesFilterCondition = this.speciesFilterCheck(filterObj['species'], character.species.toLowerCase());
       const genderFilterCondition = this.genderFilterCheck(filterObj['gender'], character.gender.toLowerCase());
-      const originFilterCondition = this.originFilterCheck(filterObj['origin'], character.origin.name.toLowerCase());
-
-      if (speciesFilterCondition && genderFilterCondition && originFilterCondition) {
+      if (speciesFilterCondition && genderFilterCondition) {
         return true;
       }
       return false;
@@ -87,17 +85,6 @@ export class RickAndMortyShowComponent implements OnInit {
 
   genderFilterCheck(filteredGenderArr: any[], charGender: string): boolean {
     if (filteredGenderArr.includes(charGender)) {
-      return true;
-    }
-    return false;
-  }
-
-  originFilterCheck(filteredOriginArr: any[], charOrigin: string): boolean {
-    if (filteredOriginArr.includes(charOrigin)) {
-      return true;
-    } else if (this.originArr.includes(charOrigin)) {
-      return false;
-    } else if (filteredOriginArr.includes('other')) {
       return true;
     }
     return false;

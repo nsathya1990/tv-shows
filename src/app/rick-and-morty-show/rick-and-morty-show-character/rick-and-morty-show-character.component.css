@@ -33,12 +33,13 @@
 
 .card-field-key {
     flex: 1;
-    color: #FFF;
+    color: #717171;
     text-align: left;
+    font-size: x-small;
 }
 
 .card-field-value {
-    flex: 2;
     color: #b66e0e;
     text-align: right;
+    font-size: x-small;
 }
