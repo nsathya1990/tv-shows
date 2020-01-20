@@ -13,6 +13,7 @@ import { RickAndMortyShowCharacterComponent } from './rick-and-morty-show/rick-a
 import { SearchComponent } from './search/search.component';
 import { SortComponent } from './sort/sort.component';
 import { FilterComponent } from './filter/filter.component';
+import { CreatedDateTransformPipe } from './rick-and-morty-show/rick-and-morty-show-pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FilterComponent } from './filter/filter.component';
     RickAndMortyShowCharacterComponent,
     SearchComponent,
     SortComponent,
-    FilterComponent
+    FilterComponent,
+    CreatedDateTransformPipe
   ],
   imports: [
     BrowserModule,

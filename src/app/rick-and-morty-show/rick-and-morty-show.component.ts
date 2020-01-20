@@ -12,6 +12,7 @@ export class RickAndMortyShowComponent implements OnInit {
 
   characterList: IRickAndMortyShowCharacter[] = [];
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
+  selectedFilters: string[] = [];
   showLoader = true;
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
@@ -24,6 +25,7 @@ export class RickAndMortyShowComponent implements OnInit {
   }
 
   getSuccess(data: IRickAndMortyShowCharacter[]) {
+    console.log(data);
     this.characterList = data.slice();
     this.visiblecharacterList = data.slice();
     this.showLoader = false;
@@ -49,13 +51,14 @@ export class RickAndMortyShowComponent implements OnInit {
       return 0;
     };
     if (sortDefinition === 'asc') {
-      this.visiblecharacterList = this.characterList.slice().sort(ascending);
+      this.visiblecharacterList = this.visiblecharacterList.slice().sort(ascending);
     } else {
-      this.visiblecharacterList = this.characterList.slice().sort(descending);
+      this.visiblecharacterList = this.visiblecharacterList.slice().sort(descending);
     }
   }
 
-  filterEpisodesBasedOnSpecies(speciesArr: any[]) {
+  filterEpisodesBasedOnSpecies(speciesArr: string[]) {
+    this.selectedFilters.concat(speciesArr);
     this.visiblecharacterList = this.characterList.filter(character => {
       const characterSpecies = character.species.toLowerCase();
       if (speciesArr.includes(characterSpecies)) {

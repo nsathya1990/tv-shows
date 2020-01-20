@@ -30,6 +30,12 @@ export class FilterComponent implements OnInit {
     abadango: true,
     other: true
   };
+  speciesArr: string[] = [];
+  genderArr: string[] = [];
+  originArr: string[] = [];
+  filterObj = {
+    species: []
+  };
 
   constructor() { }
 
@@ -38,6 +44,7 @@ export class FilterComponent implements OnInit {
   }
 
   listeningForChangesInFilter(): void {
+    this.filterObj.species = [];
     this.speciesForm.valueChanges.subscribe(species => {
       const speciesArr = [];
       Object.keys(species).forEach(key => {
@@ -45,31 +52,32 @@ export class FilterComponent implements OnInit {
           speciesArr.push(key);
         }
       });
+      this.filterObj.species = speciesArr;
       this.filterEpisodesBasedOnSpecies.emit(speciesArr);
     });
     this.genderForm.valueChanges.subscribe(gender => {
-      const genderArr = [];
+      this.genderArr = [];
       Object.keys(gender).forEach(key => {
         if (gender[key]) {
-          genderArr.push(key);
+          this.genderArr.push(key);
         }
       });
-      this.filterEpisodesBasedOnGender.emit(genderArr);
+      this.filterEpisodesBasedOnGender.emit(this.genderArr);
     });
     this.originForm.valueChanges.subscribe(origin => {
-      const originArr = [];
+      this.originArr = [];
       Object.keys(origin).forEach(key => {
         if (origin[key]) {
           if (key === 'earthC137') {
-            originArr.push('earth (c-137)');
+            this.originArr.push('earth (c-137)');
           } else if (key === 'earthReplacementDivision') {
-            originArr.push('earth (replacement dimension)');
+            this.originArr.push('earth (replacement dimension)');
           } else {
-            originArr.push(key);
+            this.originArr.push(key);
           }
         }
       });
-      this.filterEpisodesBasedOnOrigin.emit(originArr);
+      this.filterEpisodesBasedOnOrigin.emit(this.originArr);
     });
   }
 
