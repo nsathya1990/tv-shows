@@ -14,6 +14,9 @@ export class RickAndMortyShowComponent implements OnInit {
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
   selectedFilters: string[] = [];
   showLoader = true;
+  speciesArr = ['human', 'alien'];
+  genderArr = ['male', 'female', 'unknown'];
+  originArr = ['earth (c-137)', 'earth (replacement dimension)', 'abadango'];
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
@@ -57,39 +60,47 @@ export class RickAndMortyShowComponent implements OnInit {
     }
   }
 
-  filterEpisodesBasedOnSpecies(speciesArr: string[]) {
-    this.selectedFilters.concat(speciesArr);
+  filterEpisodes(filterObj: Object) {
     this.visiblecharacterList = this.characterList.filter(character => {
-      const characterSpecies = character.species.toLowerCase();
-      if (speciesArr.includes(characterSpecies)) {
-        return true;
-      } else if (speciesArr.includes('other') && characterSpecies !== 'human' && characterSpecies !== 'alien') {
+
+      const speciesFilterCondition = this.speciesFilterCheck(filterObj['species'], character.species.toLowerCase());
+      const genderFilterCondition = this.genderFilterCheck(filterObj['gender'], character.gender.toLowerCase());
+      const originFilterCondition = this.originFilterCheck(filterObj['origin'], character.origin.name.toLowerCase());
+
+      if (speciesFilterCondition && genderFilterCondition && originFilterCondition) {
         return true;
       }
       return false;
     });
   }
 
-  filterEpisodesBasedOnGender(genderArr: any[]): void {
-    this.visiblecharacterList = this.characterList.filter(character => {
-      const characterGender = character.gender.toLowerCase();
-      if (genderArr.includes(characterGender)) {
-        return true;
-      }
+  speciesFilterCheck(filteredSpeciesArr: any[], charSpecies: string): boolean {
+    if (filteredSpeciesArr.includes(charSpecies)) {
+      return true;
+    } else if (this.speciesArr.includes(charSpecies)) {
       return false;
-    });
+    } else if (filteredSpeciesArr.includes('other')) {
+      return true;
+    }
+    return false;
   }
 
-  filterEpisodesBasedOnOrigin(originArr: any[]): void {
-    this.visiblecharacterList = this.characterList.filter(character => {
-      const charOrigin = character.origin.name.toLowerCase();
-      if (originArr.includes(charOrigin)) {
-        return true;
-      } else if (originArr.includes('unknown') && charOrigin !== 'earth (c-137)' && charOrigin !== 'earth (replacement dimension)') {
-        return true;
-      }
+  genderFilterCheck(filteredGenderArr: any[], charGender: string): boolean {
+    if (filteredGenderArr.includes(charGender)) {
+      return true;
+    }
+    return false;
+  }
+
+  originFilterCheck(filteredOriginArr: any[], charOrigin: string): boolean {
+    if (filteredOriginArr.includes(charOrigin)) {
+      return true;
+    } else if (this.originArr.includes(charOrigin)) {
       return false;
-    });
+    } else if (filteredOriginArr.includes('other')) {
+      return true;
+    }
+    return false;
   }
 
 }

@@ -5,9 +5,7 @@
 </div>
 <div class="rick-morty-page">
   <div class="rick-morty-filter">
-    <app-filter (filterEpisodesBasedOnSpecies)="filterEpisodesBasedOnSpecies($event)"
-      (filterEpisodesBasedOnGender)="filterEpisodesBasedOnGender($event)"
-      (filterEpisodesBasedOnOrigin)="filterEpisodesBasedOnOrigin($event)"></app-filter>
+    <app-filter (filterEpisodes)="filterEpisodes($event)"></app-filter>
   </div>
   <div class="rick-morty-content">
     <div class="row" *ngIf="selectedFilters.length">

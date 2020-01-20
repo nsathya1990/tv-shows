@@ -8,9 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class FilterComponent implements OnInit {
 
-  @Output() filterEpisodesBasedOnSpecies = new EventEmitter<any>();
-  @Output() filterEpisodesBasedOnGender = new EventEmitter<any>();
-  @Output() filterEpisodesBasedOnOrigin = new EventEmitter<any>();
+  @Output() filterEpisodes = new EventEmitter<any>();
   @ViewChild('speciesForm') public speciesForm: NgForm;
   @ViewChild('genderForm') public genderForm: NgForm;
   @ViewChild('originForm') public originForm: NgForm;
@@ -34,7 +32,9 @@ export class FilterComponent implements OnInit {
   genderArr: string[] = [];
   originArr: string[] = [];
   filterObj = {
-    species: []
+    species: [],
+    gender: [],
+    origin: []
   };
 
   constructor() { }
@@ -44,17 +44,18 @@ export class FilterComponent implements OnInit {
   }
 
   listeningForChangesInFilter(): void {
-    this.filterObj.species = [];
+
     this.speciesForm.valueChanges.subscribe(species => {
-      const speciesArr = [];
+      this.speciesArr = [];
       Object.keys(species).forEach(key => {
         if (species[key]) {
-          speciesArr.push(key);
+          this.speciesArr.push(key);
         }
       });
-      this.filterObj.species = speciesArr;
-      this.filterEpisodesBasedOnSpecies.emit(speciesArr);
+      this.filterObj.species = this.speciesArr;
+      this.filterEpisodes.emit(this.filterObj);
     });
+
     this.genderForm.valueChanges.subscribe(gender => {
       this.genderArr = [];
       Object.keys(gender).forEach(key => {
@@ -62,8 +63,10 @@ export class FilterComponent implements OnInit {
           this.genderArr.push(key);
         }
       });
-      this.filterEpisodesBasedOnGender.emit(this.genderArr);
+      this.filterObj.gender = this.genderArr;
+      this.filterEpisodes.emit(this.filterObj);
     });
+
     this.originForm.valueChanges.subscribe(origin => {
       this.originArr = [];
       Object.keys(origin).forEach(key => {
@@ -77,7 +80,8 @@ export class FilterComponent implements OnInit {
           }
         }
       });
-      this.filterEpisodesBasedOnOrigin.emit(this.originArr);
+      this.filterObj.origin = this.originArr;
+      this.filterEpisodes.emit(this.filterObj);
     });
   }
 
