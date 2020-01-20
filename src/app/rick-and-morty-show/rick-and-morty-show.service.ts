@@ -12,8 +12,8 @@ export class RickAndMortyShowService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getRickAndMortyCharactersList(): Observable<any> {
-    const url = environment.apiUrl;
+  getRickAndMortyCharactersList(nexturl?: string): Observable<any> {
+    const url = nexturl ? nexturl : environment.apiUrl;
     return this._httpClient.get<any>(url).pipe(
       retry(2)
     );

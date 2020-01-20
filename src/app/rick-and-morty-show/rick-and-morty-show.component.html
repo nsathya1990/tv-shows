@@ -29,6 +29,6 @@
     </div>
   </div>
 </div>
-<div class="alert alert-info" role="alert" *ngIf="dataLoadedToastr">
-  Data Loaded
+<div class="alert" [ngClass]="{'alert-success': dataLoadedToastr, 'alert-info': dataLoadingToastr}" role="alert" *ngIf="dataLoadedToastr || dataLoadingToastr">
+  {{ toastrMessage }}
 </div>

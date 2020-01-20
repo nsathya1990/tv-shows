@@ -10,13 +10,20 @@ import { IRickAndMortyShowCharacter } from './rick-and-morty-show-character';
 })
 export class RickAndMortyShowComponent implements OnInit {
 
+  apiUrl: string;
   characterList: IRickAndMortyShowCharacter[] = [];
   visiblecharacterList: IRickAndMortyShowCharacter[] = [];
   selectedFilters: string[] = [];
+  dataLoadMessage = {
+    loading: 'Data Loading',
+    complete: 'Data Loaded'
+  };
   dataLoadedToastr = false;
+  dataLoadingToastr = false;
   showLoader = true;
   speciesArr = ['human', 'alien'];
   genderArr = ['male', 'female', 'unknown'];
+  toastrMessage: string;
 
   constructor(private _rickAndMortyShowService: RickAndMortyShowService) { }
 
@@ -24,24 +31,43 @@ export class RickAndMortyShowComponent implements OnInit {
     this.loadData();
   }
 
+  showHideToastr(type: string, toDisplay: boolean): void {
+    if (type === 'loading') {
+      this.dataLoadingToastr = toDisplay;
+    } else if (type === 'complete') {
+      this.dataLoadedToastr = toDisplay;
+    }
+    this.toastrMessage = this.dataLoadMessage[type];
+  }
+
   loadData(): void {
-    this._rickAndMortyShowService.getRickAndMortyCharactersList().subscribe(
-      data => this.getSuccess(data['results']),
+    this.showHideToastr('loading', true);
+    this._rickAndMortyShowService.getRickAndMortyCharactersList(this.apiUrl).subscribe(
+      data => this.getSuccess(data),
       error => this.getError(error)
     );
   }
 
-  getSuccess(data: IRickAndMortyShowCharacter[]) {
-    console.log(data);
-    this.characterList = data.slice();
-    this.visiblecharacterList = data.slice();
-    this.showLoader = false;
-    this.dataLoadedToastr = true;
-    setTimeout(() => this.dataLoadedToastr = false, 3000);
+  getSuccess(data: Object) {
+    // console.log(data);
+    const info = data['info'];
+    this.characterList = this.characterList.concat(data['results']);
+    this.visiblecharacterList = this.characterList.slice();
+    if (info['next']) {
+      this.apiUrl = info['next'];
+      this.loadData();
+    } else {
+      this.showHideToastr('loading', false);
+      this.showLoader = false;
+      this.showHideToastr('complete', true);
+      setTimeout(() => this.showHideToastr('complete', false), 3000);
+    }
   }
 
-  getError(error) {
-    console.log(error);
+  getError(error: any) {
+    this.dataLoadingToastr = true;
+    this.showHideToastr('loading', false);
+    this.showHideToastr('complete', false);
   }
 
   searchEpisodes(searchTerm: string): void {
