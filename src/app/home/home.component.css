@@ -19,3 +19,7 @@
 .carousel-caption {
     cursor: pointer;
 }
+
+.carousel-caption h5 {
+    color: #343a40;
+}
