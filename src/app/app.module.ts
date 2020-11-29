@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { SortComponent } from './sort/sort.component';
 import { FilterComponent } from './filter/filter.component';
 import { CreatedDateTransformPipe } from './rick-and-morty-show/rick-and-morty-show-pipe';
+import { ChangeBgColorDirective } from './directives/change-bg-color.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreatedDateTransformPipe } from './rick-and-morty-show/rick-and-morty-s
     SearchComponent,
     SortComponent,
     FilterComponent,
-    CreatedDateTransformPipe
+    CreatedDateTransformPipe,
+    ChangeBgColorDirective
   ],
   imports: [
     BrowserModule,
