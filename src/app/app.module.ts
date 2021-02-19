@@ -16,6 +16,8 @@ import { SortComponent } from './sort/sort.component';
 import { FilterComponent } from './filter/filter.component';
 import { CreatedDateTransformPipe } from './rick-and-morty-show/rick-and-morty-show-pipe';
 import { ChangeBgColorDirective } from './directives/change-bg-color.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ChangeBgColorDirective } from './directives/change-bg-color.directive';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

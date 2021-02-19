@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ce7acde1-01e9-4b35-bdff-b23c5f700f48/resourceGroups/clouddeveloperio/providers/Microsoft.Web/sites/tv-shows",
+    "appService.deploySubpath": "dist\\tv-shows"
+}
