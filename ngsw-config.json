@@ -29,7 +29,7 @@
         "urls": ["https://rickandmortyapi.com/api/character/avatar/**"],
         "cacheConfig": {
             "maxSize": 3,
-            "maxAge": "15m",
+            "maxAge": "0d0h10m",
             "strategy": "performance"
         }
     }
