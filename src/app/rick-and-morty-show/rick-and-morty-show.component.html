@@ -22,7 +22,7 @@
         <app-sort (sortEpisodes)="sortEpisodes($event)"></app-sort>
       </div>
     </div>
-    <div class="character-list-container">
+    <div class="character-list-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
       <div *ngFor="let character of visiblecharacterList; trackBy: trackByFn" >
         <app-rick-and-morty-show-character [character]="character"></app-rick-and-morty-show-character>
       </div>
